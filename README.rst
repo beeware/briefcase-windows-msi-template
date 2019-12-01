@@ -1,26 +1,77 @@
 Briefcase Windows MSI Template
 ==============================
 
-A template for building Python apps that will run under Windows, packages as
-an MSI installer.
+A template for building Python apps that will run under Windows.
+
+**This repository branch contains a template for Python 3.8**.
+Other Python versions are available by cloning other branches of repository.
+
+Using this template
+-------------------
 
 The easiest way to use this project is to not use it at all - at least,
-not directly. `Briefcase <https://github.com/beeware/briefcase/>`__ is a
+not directly. `Briefcase <https://github.com/pybee/briefcase/>`__ is a
 tool that uses this template, rolling it out using data extracted from
 your ``setup.py``.
 
-The master branch of this repository has no content; there is an
-independent branch for each supported version of Python. The following
-Python versions are supported:
+However, if you *do* want use this template directly...
 
-* `Python 3.5 <https://github.com/beeware/briefcase-Windows-msi-template/tree/3.5>`__
-* `Python 3.6 <https://github.com/beeware/briefcase-Windows-msi-template/tree/3.6>`__
-* `Python 3.7 <https://github.com/beeware/briefcase-Windows-msi-template/tree/3.7>`__
-* `Python 3.8 <https://github.com/beeware/briefcase-Windows-msi-template/tree/3.8>`__
+1. Install `cookiecutter`_. This is a tool used to bootstrap complex project
+   templates::
 
-Suggestions for template changes should be made against the `dev branch
-<https://github.com/beeware/briefcase-Windows-msi-template/tree/dev>`__; these will
-then be backported into the supported Python releases. The dev branch will
-track the most recent supported version of Python (currently, Python 3.8)
+    $ pip install cookiecutter
 
-See the individual branches for usage instructions.
+2. Run ``cookiecutter`` on the Python-Windows template::
+
+    $ cookiecutter https://github.com/beeware/briefcase-Windows-msi-template --checkout 3.8
+
+3. `Download the Python Embedded Windows install`_, and extract it.
+
+4. Add your code to the template. At the very minimum, you need to have an
+   ``app/<app name>/__main__.py`` file that defines an entry point that
+   will start your application. If ``<app name>`` contains a dash, it will be
+   converted to an underscore in the expected package name
+
+   If your code has any dependencies, they should be installed under the
+   ``app_packages`` directory.
+
+
+If you've done this correctly, a project with a formal name of ``My Project``,
+with an app name of ```my-project`` should have a directory structure that
+looks something like::
+
+    My Project/
+        My Project.lnk
+        app/
+            my_project/
+                __init__.py
+                __main__.py
+                app.py
+        app_packages/
+            ...
+        python/
+            ...
+
+The top level directory should identify as an Windows application, and can be
+distributed as a standalone package.
+
+Next steps
+----------
+
+Of course, just running Python code isn't very interesting by itself - you'll
+be able to output to the console, and see that output in XCode, but if you
+tap the app icon on your phone, you won't see anything - because there isn't a
+visible console on an iPhone.
+
+To do something interesting, you'll need to work with the native Windows system
+libraries to draw widgets and respond to screen taps. One option is the `toga`_
+library, which is a cross-platform widget toolkit that supports Windows.
+
+If you have any external library dependencies (like ``toga``, or anything other
+third-party library), you should install the library code into the
+``app_packages`` directory. This directory is the same as a  ``site_packages``
+directory on a normal Python install.
+
+.. _cookiecutter: http://github.com/audreyr/cookiecutter
+.. _Download the Python Embedded Windows install: https://www.python.org/ftp/python/3.8.0/python-3.8.0-embed-amd64.zip
+.. _toga: http://beeware.org/toga

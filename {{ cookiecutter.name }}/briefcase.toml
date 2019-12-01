@@ -2,4 +2,4 @@
 app_path = "SourceDir/app"
 app_packages_path = "SourceDir/app_packages"
 support_path = "SourceDir/python"
-icon = "{{ cookiecutter.name }}.icns"
+icon = "{{ cookiecutter.name }}.ico"

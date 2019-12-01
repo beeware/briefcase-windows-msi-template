@@ -3,7 +3,7 @@ Briefcase Windows MSI Template
 
 A template for building Python apps that will run under Windows.
 
-**This repository branch contains a template for Python 3.8**.
+**This repository branch contains a template for Python 3.7**.
 Other Python versions are available by cloning other branches of repository.
 
 Using this template
@@ -23,7 +23,7 @@ However, if you *do* want use this template directly...
 
 2. Run ``cookiecutter`` on the Python-Windows template::
 
-    $ cookiecutter https://github.com/beeware/briefcase-Windows-msi-template --checkout 3.8
+    $ cookiecutter https://github.com/beeware/briefcase-Windows-msi-template --checkout 3.7
 
 3. `Download the Python Embedded Windows install`_, and extract it.
 
@@ -73,5 +73,5 @@ third-party library), you should install the library code into the
 directory on a normal Python install.
 
 .. _cookiecutter: http://github.com/audreyr/cookiecutter
-.. _Download the Python Embedded Windows install: https://www.python.org/ftp/python/3.8.0/python-3.8.0-embed-amd64.zip
+.. _Download the Python Embedded Windows install: https://www.python.org/ftp/python/3.7.5/python-3.7.5-embed-amd64.zip
 .. _toga: http://beeware.org/toga

@@ -46,7 +46,7 @@
 
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder">
-                <Directory Id="BRIEFCASE_CONTENT" Name="{{ cookiecutter.formal_name }}" />
+                <Directory Id="{{ cookiecutter.name }}_ROOTDIR" Name="{{ cookiecutter.formal_name }}" />
             </Directory>
 
             <Directory Id="ProgramMenuFolder">
@@ -59,8 +59,8 @@
                                 Name="{{ cookiecutter.formal_name }}"
                                 Icon="ProductIcon"
                                 Description="{{ cookiecutter.description }}"
-                                Target="[BRIEFCASE_CONTENT]python\pythonw.exe"
-                                WorkingDirectory="BRIEFCASE_CONTENT"
+                                Target="[{{ cookiecutter.name }}_ROOTDIR]python\pythonw.exe"
+                                WorkingDirectory="{{ cookiecutter.name }}_ROOTDIR"
                                 Arguments="-m tutorial" />
                         <RegistryValue
                                 Root="HKCU"
@@ -80,7 +80,7 @@
         </InstallExecuteSequence>
 
         <Feature Id="DefaultFeature" Level="1">
-            <ComponentGroupRef Id="BRIEFCASE_COMPONENTS" />
+            <ComponentGroupRef Id="{{ cookiecutter.name }}_COMPONENTS" />
             <ComponentRef Id="ApplicationShortcuts"/>
         </Feature>
 

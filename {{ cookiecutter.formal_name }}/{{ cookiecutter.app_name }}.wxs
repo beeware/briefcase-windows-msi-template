@@ -17,7 +17,7 @@
 
         <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 
-        <Icon Id="ProductIcon" SourceFile="{{ cookiecutter.name }}.ico" />
+        <Icon Id="ProductIcon" SourceFile="{{ cookiecutter.app_name }}.ico" />
 
         <Property Id="ARPPRODUCTICON" Value="ProductIcon" />
         {%- if cookiecutter.url %}

@@ -13,10 +13,8 @@
                 InstallerVersion="200"
                 Compressed="yes"
                 Comments="Windows Installer Package"
+                InstallScope="{{ cookiecutter.install_scope or 'perUser' }}"
         />
-
-        <Property Id="ALLUSERS" Value="2" />
-        <Property Id="MSIINSTALLPERUSER" Value="1" />
 
         <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 

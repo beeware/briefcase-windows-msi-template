@@ -16,6 +16,12 @@
                 InstallScope="{{ cookiecutter.install_scope or 'perUser' }}"
         />
 
+        {%- if cookiecutter.install_scope == "perUser" -%}
+
+        <Property Id="ALLUSERS" Value="2" />
+        <Property Id="MSIINSTALLPERUSER" Value="1" />
+
+        {% endif %}
         <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 
         <Icon Id="ProductIcon" SourceFile="{{ cookiecutter.app_name }}.ico" />

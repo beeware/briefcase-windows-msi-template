@@ -93,7 +93,7 @@
                         Arguments="-m {{ cookiecutter.module_name }}" />
                     <RemoveFolder Id="DesktopFolder" On="uninstall"/>
                     {%- if cookiecutter.uri_schemes -%}
-                        {%- for scheme in cookiecutter.uri_schemes -%}
+                        {%- for scheme in cookiecutter.uri_schemes.split(',') -%}
                         <RegistryKey 
                             Root="HKCU"
                             Key="Software\Classes\{{ scheme }}"

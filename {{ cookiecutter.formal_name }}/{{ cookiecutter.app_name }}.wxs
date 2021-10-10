@@ -80,6 +80,36 @@
                     </Component>
                 </Directory>
             </Directory>
+
+            <Directory Id="DesktopFolder" Name="Desktop">
+                <Component Id="ApplicationShortcutDesktop" Guid="*">
+                    <Shortcut
+                        Id="ApplicationDesktopShortcut"
+                        Name="{{ cookiecutter.formal_name }}"
+                        Icon="ProductIcon"
+                        Description="{{ cookiecutter.description }}"
+                        Target="[{{ cookiecutter.module_name }}_ROOTDIR]python\pythonw.exe"
+                        WorkingDirectory="{{ cookiecutter.module_name }}_ROOTDIR"
+                        Arguments="-m {{ cookiecutter.module_name }}" />
+                    <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+                    {%- if cookiecutter.uri_schemes | parse_list -%}
+                        {%- for scheme in cookiecutter.uri_schemes | parse_list -%}
+                        <RegistryKey 
+                            Root="HKCU"
+                            Key="Software\Classes\{{ scheme }}"
+                            ForceCreateOnInstall="yes"
+                            ForceDeleteOnUninstall="yes"
+                        >
+                            <RegistryValue Type="string" Name="URL Protocol" Value=""/>
+                            <RegistryValue Type="string" Value="URL:{{ cookiecutter.formal_name }} Protocol"/>
+                            <RegistryKey Key="shell\open\command">
+                                <RegistryValue Type="string" Value="&quot;[{{ cookiecutter.module_name }}_ROOTDIR]python\pythonw.exe&quot; -m {{ cookiecutter.module_name }} &quot;%1&quot;" />
+                            </RegistryKey>
+                        </RegistryKey>
+                        {% endfor %}
+                    {% endif %}
+                </Component>
+            </Directory>
         </Directory>
 
         <InstallExecuteSequence>
@@ -89,6 +119,7 @@
         <Feature Id="DefaultFeature" Level="1">
             <ComponentGroupRef Id="{{ cookiecutter.module_name }}_COMPONENTS" />
             <ComponentRef Id="ApplicationShortcuts"/>
+            <ComponentRef Id="ApplicationShortcutDesktop"/>
         </Feature>
 
         <UI Id="UserInterface">

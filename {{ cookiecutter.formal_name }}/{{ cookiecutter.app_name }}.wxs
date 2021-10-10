@@ -92,8 +92,8 @@
                         WorkingDirectory="{{ cookiecutter.module_name }}_ROOTDIR"
                         Arguments="-m {{ cookiecutter.module_name }}" />
                     <RemoveFolder Id="DesktopFolder" On="uninstall"/>
-                    {%- if cookiecutter.uri_schemes -%}
-                        {%- for scheme in cookiecutter._uri_schemes.split(',') -%}
+                    {%- if cookiecutter.uri_schemes | parse_list -%}
+                        {%- for scheme in cookiecutter.uri_schemes | parse_list -%}
                         <RegistryKey 
                             Root="HKCU"
                             Key="Software\Classes\{{ scheme }}"

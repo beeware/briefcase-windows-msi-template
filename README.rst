@@ -4,7 +4,7 @@ Briefcase Windows MSI Template
 A `Cookiecutter <https://github.com/cookiecutter/cookiecutter/>`__ template for
 building Python apps that will run under Windows, packaged as an MSI installer.
 
-**This repository branch contains a template for Python 3.10**.
+**This repository branch contains a template for Python 3.9**.
 Other Python versions are available by cloning other branches of repository.
 
 Using this template
@@ -24,7 +24,7 @@ However, if you *do* want use this template directly...
 
 2. Run ``cookiecutter`` on the template::
 
-    $ cookiecutter https://github.com/beeware/briefcase-windows-msi-template --checkout 3.10
+    $ cookiecutter https://github.com/beeware/briefcase-windows-msi-template --checkout 3.9
 
    This will ask you for a number of details of your application, including the
    `name` of your application (which should be a valid PyPI identifier), and
@@ -110,6 +110,6 @@ third-party library), you should install the library code into the
 directory on a desktop Python install.
 
 .. _cookiecutter: https://github.com/cookiecutter/cookiecutter
-.. _Download the Python Embedded Windows install: https://briefcase-support.org/python?platform=windows&version=3.10
+.. _Download the Python Embedded Windows install: https://briefcase-support.org/python?platform=windows&version=3.9
 .. _Python for .NET: http://pythonnet.github.io/
 .. _Toga: https://beeware.org/project/projects/libraries/toga

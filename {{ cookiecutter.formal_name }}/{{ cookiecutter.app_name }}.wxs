@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?define ProductVersion = "{{ cookiecutter.version_triple }}" ?>
 <?define ProductUpgradeCode = "{{ cookiecutter.guid }}" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -8,7 +8,8 @@
             Name="{{ cookiecutter.formal_name }}"
             Version="$(var.ProductVersion)"
             Manufacturer="{{ cookiecutter.author or 'Anonymous' }}"
-            Language="1033">
+            Language="1033"
+            Codepage="utf-8">
         <Package
                 InstallerVersion="200"
                 Compressed="yes"

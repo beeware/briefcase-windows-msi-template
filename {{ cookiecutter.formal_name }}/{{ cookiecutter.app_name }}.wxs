@@ -54,7 +54,7 @@
         </Upgrade>
 
         <Directory Id="TARGETDIR" Name="SourceDir">
-            <Directory Id="ProgramFiles64Folder">
+            <Directory Id="{% if cookiecutter._use_arch64 %}ProgramFiles64Folder{% else %}ProgramFilesFolder{% endif %}">
                 <Directory Id="{{ cookiecutter.module_name }}_ROOTDIR" Name="{{ cookiecutter.formal_name }}" />
             </Directory>
 
@@ -63,7 +63,10 @@
                     <Component
                             Id="ApplicationShortcuts"
                             Guid="*"
-                            Win64="yes">
+                            {% if cookiecutter._use_arch64 -%}
+                            Win64="yes"
+                            {% endif -%}
+                    >
                         <Shortcut
                                 Id="ApplicationShortcut1"
                                 Name="{{ cookiecutter.formal_name }}"

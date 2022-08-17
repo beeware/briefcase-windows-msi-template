@@ -1,6 +1,12 @@
 Briefcase Windows MSI Template
 ==============================
 
+**NOTE: This template has been deprecated. Briefcase 0.3.9 deprecated the
+``msi`` backend in favor of `app
+<https://github.com/beeware/briefcase-windows-app-template>`__ and `Visual Studio
+<https://github.com/beeware/briefcase-windows-VisualStudio-template>`__
+backends.**
+
 A `Cookiecutter <https://github.com/cookiecutter/cookiecutter/>`__ template for
 building Python apps that will run under Windows, packaged as an MSI installer.
 
